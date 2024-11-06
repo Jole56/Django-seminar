@@ -1,0 +1,100 @@
+{% block all_predmets %}
+<style>
+    body {
+        font-family: Arial, sans-serif;
+        background-color: #f0f8ff;
+        margin: 0;
+        padding: 20px;
+        text-align: center;
+    }
+    .container {
+        max-width: 1000px;
+        margin: 0 auto;
+    }
+    .header {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        margin-bottom: 20px;
+    }
+    table {
+        width: 100%;
+        border-collapse: collapse;
+        border: 1px solid #ddd;
+        box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        background-color: white;
+    }
+    th, td {
+        border: 1px solid #ddd;
+        padding: 8px;
+        text-align: left;
+    }
+    th {
+        background-color: #f2f2f2;
+    }
+    tr:nth-child(even) {
+        background-color: #f9f9f9;
+    }
+    tr:hover {
+        background-color: #f1f1f1;
+    }
+    .edit {
+        background-color: skyblue;
+        color: white;
+        border: none;
+        padding: 5px 10px;
+        text-align: center;
+        text-decoration: none;
+        display: inline-block;
+        font-size: 1em;
+        cursor: pointer;
+        border-radius: 5px;
+    }
+    .edit:hover {
+        background-color: deepskyblue;
+    }
+    .back_button, .add_button {
+        background-color: skyblue;
+        color: white;
+        text-decoration: none;
+        border-radius: 5px;
+        padding: 10px 20px;
+        margin: 10px;
+        text-align: center;
+    }
+    .back_button:hover, .add_button:hover {
+        background-color: deepskyblue;
+    }
+</style>
+<div class="container">
+    <div class="header">
+        <a class="back_button" href="javascript:history.back()">Povratak na Admin Panel</a>
+        <a class="add_button" href="add_predmet">Dodaj Novi Predmet</a>
+    </div>
+    <table>
+        <tr>
+            <th>Predmet</th>
+            <th>Kod</th>
+            <th>Program</th>
+            <th>Semestar(Redovni)</th>
+            <th>Semestar(Izvandredni)</th>
+            <th>ECTS</th>
+            <th>Izborni</th>
+            <th>Nositelj</th>
+        </tr>
+        {% for predmet in predmets %}
+        <tr>
+            <td>{{ predmet.name }}</td>
+            <td>{{ predmet.kod }}</td>
+            <td>{{ predmet.program }}</td>
+            <td>{{ predmet.sem_red }}</td>
+            <td>{{ predmet.sem_izv }}</td>
+            <td>{{ predmet.ects }}</td>
+            <td>{{ predmet.izborni }}</td>
+            <td>{{ predmet.nositelj }}</td>
+            <td><a class="edit" href="editPredmet/{{ predmet.id }}">Edit</a></td>
+        </tr>
+        {% endfor %}
+    </table>
+</div>
+{% endblock %}

@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Professor Profile</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f0f8ff;
+            margin: 0;
+            padding: 20px;
+            text-align: center;
+        }
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 20px;
+            border: 3px solid skyblue;
+            border-radius: 10px;
+            background-color: white;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+        h1 {
+            margin-bottom: 20px;
+        }
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            border: 1px solid #ddd;
+            margin-bottom: 20px;
+        }
+        th, td {
+            border: 1px solid #ddd;
+            padding: 8px;
+            text-align: left;
+        }
+        th {
+            background-color: #f2f2f2;
+        }
+        tr:nth-child(even) {
+            background-color: #f9f9f9;
+        }
+        tr:hover {
+            background-color: #f1f1f1;
+        }
+        .logout-button {
+            background-color: skyblue;
+            color: white;
+            padding: 10px 20px;
+            text-decoration: none;
+            border-radius: 5px;
+            margin-top: 20px;
+            display: inline-block;
+            transition: background-color 0.3s ease;
+        }
+        .logout-button:hover {
+            background-color: deepskyblue;
+        }
+        .edit-status-button {
+            background-color: skyblue; /* Zelena boja */
+            color: white;
+            padding: 8px 12px;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+            text-decoration: none;
+        }
+        .edit-status-button:hover {
+            background-color: deepskyblue; /* Tamnija zelena boja */
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Dobrodošli, {{ user.first_name }} {{ user.last_name }}</h1>
+        <a class="logout-button" href="{% url 'logout' %}">Logout</a>
+        <h2>Your Subjects</h2>
+        <form method="get">
+            <label for="sort">Sort by:</label>
+            <select name="sort" id="sort">
+                <option value="">-- Select --</option>
+                <option value="lost">Izgubio potpis</option>
+                <option value="pending">Polaganje u tijeku</option>
+                <option value="passed">Položio predmet</option>
+            </select>
+            <input type="submit" value="Sort">
+        </form>
+        {% for subject in predmet_sa_studentima %}
+            <h3>{{ subject.subject.name }}</h3>
+            <table>
+                <tr>
+                    <th>Student ID</th>
+                    <th>Username</th>
+                    <th>Last Name</th>
+                    <th>First Name</th>
+                    <th>Email</th>
+                    <th>Status</th>
+                </tr>
+                {% for student in subject.studenti %}
+                <tr>
+                    <td>{{ student.student.id }}</td>
+                    <td>{{ student.student.username }}</td>
+                    <td>{{ student.student.last_name }}</td>
+                    <td>{{ student.student.first_name }}</td>
+                    <td>{{ student.student.email }}</td>
+                    <td>{{ student.status }}</td>
+                    <td><a class="edit-status-button" href="editStatus/{{ student.student.id }}/{{ subject.subject.id}}">Edit Status</a></td>
+                </tr>
+                {% endfor %}
+            </table>
+        {% endfor %}
+    </div>
+</body>
+</html>

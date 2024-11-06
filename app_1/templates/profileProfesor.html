@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Professor Profile</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f0f8ff;
+            margin: 0;
+            padding: 20px;
+            text-align: center;
+        }
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 20px;
+            border: 3px solid skyblue;
+            border-radius: 10px;
+            background-color: white;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+        .logout-button, .subjects-button {
+            background-color: skyblue;
+            color: white;
+            padding: 10px 20px;
+            text-decoration: none;
+            border-radius: 5px;
+            margin-top: 20px;
+            display: inline-block;
+            margin-right: 10px;
+            transition: background-color 0.3s ease;
+        }
+        .logout-button:hover, .subjects-button:hover {
+            background-color: deepskyblue;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Dobrodošli, {{ user.first_name }} {{ user.last_name }}</h1>
+        <a class="logout-button" href="{% url 'logout' %}">Logout</a>
+        <a class="subjects-button" href="profesorPredmets">Predmeti</a>
+    </div>
+</body>
+</html>

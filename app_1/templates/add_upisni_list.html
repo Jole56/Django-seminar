@@ -1,0 +1,85 @@
+{% block add_upisni_list %}
+<style>
+    body {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 100vh;
+        margin: 0;
+        font-family: Arial, sans-serif;
+        background-color: #f0f8ff;
+    }
+    .container {
+        border: 3px solid skyblue;
+        padding: 20px;
+        border-radius: 10px;
+        background-color: white;
+        box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        max-width: 400px;
+        width: 100%;
+        text-align: center;
+        align-items: center;
+    }
+    h2 {
+        margin-bottom: 20px;
+    }
+    input[type="submit"] {
+        background-color: skyblue;
+        border: none;
+        color: white;
+        padding: 10px 20px;
+        text-decoration: none;
+        display: inline-block;
+        font-size: 1em;
+        margin-top: 10px;
+        cursor: pointer;
+        border-radius: 5px;
+    }
+    input[type="submit"]:hover {
+        background-color: deepskyblue;
+    }
+    .back_button{
+        box-sizing: border-box;
+        float: right;
+        margin: 10px 60px 10px 10px;
+        padding: 10px 20px;
+        background-color: skyblue;
+        color: white;
+        text-decoration: none;
+        border-radius: 5px;
+    }
+    .back_button:hover{
+        background-color: deepskyblue;
+    }
+    form p {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        margin: 10px 0;
+    }
+    form label {
+        margin-bottom: 5px;
+        font-weight: bold;
+    }
+    form input[type="text"],
+    form input[type="number"],
+    form select {
+        width: 50%;
+        padding: 8px;
+        margin-bottom: 10px;
+        border: 1px solid #ccc;
+        border-radius: 5px;
+        box-sizing: border-box;
+    }
+</style>
+<div class="container">
+<h1>Add Upisni List</h1>
+<br>
+<form method="POST">
+    {{ form.as_p }}
+    {% csrf_token %}
+<input type="submit" value="add Upis">
+<a class="back_button" href="javascript:history.back()">Povratak</a>
+</form>
+</div>
+{%endblock%}

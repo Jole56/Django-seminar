@@ -1,0 +1,37 @@
+{% block upisni_list %}
+<style>
+    table {
+    border-collapse: collapse;
+    border: 1px solid black;
+    }
+    td,th {
+        border: 1px solid black;
+        text-align: left;
+    }
+</style>
+<table>
+    <tr>
+        <th>Student ID</th>
+        <th>Username</th>
+        <th>Last name</th>
+        <th>First name</th>
+        <th>Email</th>
+        <th>Status</th>
+        <th>Upisni List</th>
+    </tr>
+{% for field in upisni %}
+<tr>
+    <td>{{ field.student.id }}</td>
+    <td>{{ field.student.username }}</td>
+    <td>{{ field.student.last_name }}</td>
+    <td>{{ field.student.first_name }}</td>
+    <td>{{ field.student.email }}</td>
+    <td>{{ field.student.status }}</td>
+    <td>{{ field.predmet.name }}</td>
+    <td>{{ field.status }}</td>
+
+
+</tr>
+{%endfor%}
+</table>
+{%endblock%}

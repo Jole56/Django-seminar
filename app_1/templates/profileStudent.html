@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Student Profile</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f0f8ff;
+            margin: 0;
+            padding: 20px;
+            text-align: center;
+        }
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+        .header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 20px;
+        }
+        .button {
+            background-color: skyblue;
+            color: white;
+            text-decoration: none;
+            border-radius: 5px;
+            padding: 10px 20px;
+            margin: 10px;
+        }
+        .button:hover {
+            background-color: deepskyblue;
+        }
+        .upisani-box, .neupisani-box {
+            margin-top: 20px;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            padding: 10px;
+            background-color: #fff;
+            box-shadow: 0 0 5px rgba(0, 0, 0, 0.1);
+        }
+        .upisani-box h2, .neupisani-box h2 {
+            margin-bottom: 10px;
+        }
+        .upisani-box ul, .neupisani-box ul {
+            list-style-type: none;
+            padding: 0;
+        }
+        .upisani-box li, .neupisani-box li {
+            margin-bottom: 5px;
+        }
+        .upisani-box a, .neupisani-box a {
+            background-color: skyblue;
+            color: white;
+            text-decoration: none;
+            border-radius: 3px;
+            padding: 5px 10px;
+            margin-left: 5px;
+        }
+        .upisani-box a:hover, .neupisani-box a:hover {
+            background-color: deepskyblue;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Welcome, {{ user.first_name }}</h1>
+        <div class="header">
+            <a class="button" href="{% url 'logout' %}">Logout</a>
+        </div>
+
+        <div class="upisani-box">
+            <h2>Your Enrolled Courses</h2>
+            <ul>
+                {% for predmet in predmeti %}
+                {% if predmet.upisan %}
+                <li>{{ predmet.name }}
+                    <a href="{% url 'withdraw_predmet' predmet.id %}">Withdraw</a>
+                </li>
+                {% endif %}
+                {% endfor %}
+            </ul>
+        </div>
+
+        <div class="neupisani-box">
+            <h2>Your Available Courses</h2>
+            <ul>
+                {% for predmet in predmeti %}
+                {% if not predmet.upisan %}
+                <li>{{ predmet.name }}
+                    <a href="{% url 'enroll_predmet' predmet.id %}">Enroll</a>
+                </li>
+                {% endif %}
+                {% endfor %}
+            </ul>
+        </div>
+    </div>
+</body>
+</html>

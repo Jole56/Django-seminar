@@ -1,0 +1,86 @@
+{% block edit_student %}
+<head>
+    <title>Uredi Studenta</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f0f8ff;
+            margin: 0;
+            padding: 20px;
+            display: flex;
+            justify-content: center;
+            align-items: flex-start;
+            min-height: 100vh;
+        }
+        .container {
+            border: 3px solid skyblue;
+            padding: 20px;
+            border-radius: 10px;
+            background-color: white;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            max-width: 400px;
+            width: 100%;
+            text-align: center;
+            position: relative;
+        }
+        h1 {
+            margin-bottom: 20px;
+        }
+        input[type="text"], input[type="number"],input[type="email"],input[type="password"], select {
+            width: 100%;
+            padding: 10px;
+            margin: 2px 0;
+            box-sizing: border-box;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            font-size: 1em;
+        }
+        input[type="submit"] {
+            background-color: skyblue;
+            border: none;
+            color: white;
+            padding: 10px 20px;
+            text-decoration: none;
+            display: inline-block;
+            font-size: 1em;
+            margin-top: 10px;
+            cursor: pointer;
+            border-radius: 5px;
+        }
+        input[type="submit"]:hover {
+            background-color: deepskyblue;
+        }
+        .back_button {
+            padding: 10px 20px;
+            background-color: skyblue;
+            color: white;
+            text-decoration: none;
+            border-radius: 5px;
+            display: inline-block;
+            margin-top: 10px;
+        }
+        .back_button:hover {
+            background-color: deepskyblue;
+        }
+        .button_container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-top: 10px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Edit Student</h1>
+        <form method="post">
+            {% csrf_token %}
+            {{ form.as_p }}
+            <div class="button_container">
+                <input type="submit" value="Spremi promjene">
+                <a class="back_button" href="javascript:history.back()">Povratak</a>
+            </div>
+        </form>
+    </div>
+</body>
+{% endblock %}

@@ -1,0 +1,17 @@
+{% block studenti_sa_vise_od_10_ects %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Studenti sa više od 10 ECTS bodova</title>
+</head>
+<body>
+    <h1>Studenti sa više od 10 ECTS bodova</h1>
+    <ul>
+        {% for student in studenti %}
+            <li>{{ student }}</li>
+        {% endfor %}
+    </ul>
+</body>
+</html>
+{%endblock%}

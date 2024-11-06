@@ -1,0 +1,55 @@
+{% block adminPanel %}
+<style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f0f8ff;
+            margin: 0;
+            padding: 0;
+            text-align: center;
+        }
+        .container {
+            margin: 20px auto;
+            padding: 20px;
+            width: 80%;
+            max-width: 600px;
+            background-color: white;
+            border-radius: 5px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+        .container h1 {
+            margin-bottom: 20px;
+        }
+        .container p {
+            font-size: 1.2em;
+            margin-bottom: 20px;
+        }
+        .container a {
+            display: block;
+            margin: 10px auto;
+            padding: 10px 20px;
+            background-color: skyblue;
+            color: white;
+            text-decoration: none;
+            border-radius: 5px;
+            width: fit-content;
+            width: 200px;
+            text-align: center;
+        }
+        .container a:hover {
+            background-color: deepskyblue;
+        }
+</style>
+<body>
+<div class="container">
+    <h1>Admin Dashboard</h1>
+    <p>Welcome, {{ admin }}</p>
+    <a href="all_predmets">View Subjects</a>
+    <a href="all_students">View Students</a>
+    <a href="all_profesors">View Profesors</a>
+    <a href="assignNositelj">Assign Subject to Profesor</a>
+    <a href="add_upisni_list">Create Upisni List</a>
+    <a href="all_upisi">View Upisni Lists</a>
+</div>
+</body>
+
+{%endblock%}
